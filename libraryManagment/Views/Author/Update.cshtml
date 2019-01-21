@@ -1,0 +1,29 @@
+﻿@model LibraryManagment.Data.Model.Author
+
+@{
+    ViewData["Title"] = "Update Author";
+}
+
+
+<hr />
+<div class="row orderfrom">
+    <div class="col-md-4">
+        <form asp-action="Update" asp-controller="Author" method="post" role="form" class="form-horizontal">
+            <h3 class="col-md-offset-2">Edit Author @Model.Name </h3>
+            @Html.HiddenFor(m => Model.AuthorId)
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="btn-group col-md-offset-2 col-md-6">
+                    <input type="submit" value="Return" class="btn btn-success" asp-controller="Author" asp-action="List" />
+                    <input type="submit" value="Update" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

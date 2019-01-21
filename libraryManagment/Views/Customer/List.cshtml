@@ -1,0 +1,30 @@
+﻿@using LibraryManagment.ViewModel
+@model IEnumerable<CustomerViewModel>
+
+
+<a class="btn btn-success mt-5" style="margin:10px" asp-controller="Customer" asp-action="Create">Create New Customer</a>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th> Name </th>
+            <th> Borrowed boooks count </th>
+            <th> Edit Customer </th>
+            <th> Delete Customer </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var CustomerVM in Model)
+        {
+        <tr>
+            <td>@CustomerVM.Customer.CustomerId</td>
+            <td>@CustomerVM.Customer.Name</td>
+            <td>@CustomerVM.BookCount</td>
+            <td><a class="btn btn-info" asp-controller="Customer" asp-action="Update" asp-route-id="@CustomerVM.Customer.CustomerId">Edit</a> </td>
+            <td><a class="btn btn-danger" asp-controller="Customer" asp-action="Delete" asp-route-id="@CustomerVM.Customer.CustomerId">Delete</a> </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
