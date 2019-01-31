@@ -1,7 +1,33 @@
-﻿
-@{
-    ViewData["Title"] = "List";
-}
+﻿@using LibraryManagment.Data.Model
 
-<h2>List</h2>
+@model IEnumerable<Book>
+
+
+<a class="btn btn-success mt-5" style="margin:10px" asp-controller="Book" asp-action="Create">Create New Book</a>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th> Name </th>
+            <th> Author name </th>
+            <th> Edit Book </th>
+            <th> Delete Book </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.BookId</td>
+                <td>@book.Title</td>
+                <td>@book.Author.Name</td>
+                <td><a class="btn btn-info" asp-controller="Book" asp-action="Update" asp-route-id="@book.BookId">Edit</a> </td>
+                <td><a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@book.BookId">Delete</a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
 
