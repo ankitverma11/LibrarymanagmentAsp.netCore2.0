@@ -1,0 +1,27 @@
+﻿@using LibraryManagment.Data.Model
+
+@model IEnumerable<Book>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th> Name </th>
+            <th> Author Name </th>
+            <th> Borrower Name </th>
+            <th> Return </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+        <tr>
+            <td>@book.BookId</td>
+            <td>@book.Title</td>
+            <td>@book.Author.Name</td>
+            <td>@book.Borrowner.Name</td>
+            <td><a class="btn btn-success" asp-controller="Return" asp-action="ReturnABook" asp-route-id="@book.BookId">Return</a> </td>
+        </tr>
+        }
+    </tbody>
+</table>
